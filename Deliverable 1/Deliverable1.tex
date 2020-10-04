@@ -5,6 +5,7 @@
 \usepackage{commath}
 \usepackage{subfig}
 \usepackage{float}
+\usepackage{natbib}
 \oddsidemargin 0pt
 \evensidemargin 0pt
 \marginparwidth 40pt
@@ -33,7 +34,7 @@
 \makeatletter
 \setlength{\@fptop}{0pt}
 \makeatother
-\bibliographystyle{ieeetr}
+
 \begin{document}
 
 \maketitle
@@ -46,5 +47,8 @@ Target Countries: Japan, People’s Republic of China, Philippine, and Nepal (In
 \section{Proposed Model}\label{section-proposedmodel}
 $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_nx_n + \epsilon$
 
-Initially, we choose total population, population density, urban population percentage, unemployment rate, real estate activities, taxes on property, per capita GDP, household final consumption, interest rate as independent variables($x_i$). Dependent variable($y$) is the house price index.
+Initially, we choose total population, population density, urban population percentage, unemployment rate, real estate activities, taxes on property, per capita GDP, household final consumption, interest rate\citep{10.2307/23606731, 10.2139/ssrn.2431627, aei297454} as independent variables($x_i$). Dependent variable($y$) is the house price index.
+
+\bibliographystyle{apalike}
+\bibliography{references}
 \end{document}

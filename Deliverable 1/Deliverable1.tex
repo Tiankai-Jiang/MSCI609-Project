@@ -49,6 +49,20 @@ $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_nx_n + \epsilon$
 
 Initially, we choose total population, population density, urban population percentage, unemployment rate, real estate activities, taxes on property, per capita GDP, household final consumption, interest rate\citep{10.2307/23606731, 10.2139/ssrn.2431627, aei297454} as independent variables($x_i$). Dependent variable($y$) is the house price index.
 
+\section{Modeling data}\label{section-proposedmodel}
+In this section, we plan to briefly walk through the data modeling and analysis steps which will contribute towards the final delieverable. Using the data from USA as an example, we collected the data of the annual housing price index, GPD per capital, Unemployement rate, and number of building permits.
+
+\begin{figure}[H]
+\captionsetup[subfigure]{labelformat=empty}
+\centering
+\subfloat[]{\includegraphics[width=0.24\textwidth]{./image/price_index.png}}
+\subfloat[] {\includegraphics[width=0.24\textwidth]{./image/Gdp.png}}
+\subfloat[] {\includegraphics[width=0.24\textwidth]{./image/Unemployment.png}}
+\subfloat[] {\includegraphics[width=0.24\textwidth]{./image/building_permit.png}}
+\end{figure}
+
+As shown above, the housing price has an overall uptrend, with a periodic recession during the 2008 financial crisis. A similar pattern appeals to the growth of GDP per capita. On the other hand, the national unemployment rate and the number of issued building permits are cyclical under the influence of the national economic, world economic environment, and other factors. Although displayed differently, we can still capture similarity characteristics. For instance, unemployment is recorded at a historical high during the financial crisis(The unemployment rate is a lagging indicator of the business cycle. Therefore, we see the historical high is recorded in 2010, but the upward trend obviously started at approximately coincide with the crisis). In the same way, a pattern can also seem for building permits. 
+Hence, we will choose these three mentioned factors as the independent variables for the HPI in the model and analysis of the data based upon it.   
 \bibliographystyle{apalike}
 \bibliography{references}
 \end{document}

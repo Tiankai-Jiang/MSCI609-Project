@@ -1,0 +1,260 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amscd, amsthm, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{commath}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{natbib}
+\usepackage{booktabs}
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\marginparwidth 40pt
+\marginparsep 10pt
+\topmargin -20pt
+\headsep 10pt
+\textheight 8.7in
+\textwidth 6.65in
+\linespread{1.5}
+
+\title{Economics Influence on Housing price Index within Southeast Asian Countries}
+\author{Steven Qin\\20819760\\s45qin@uwaterloo.ca \and Tiankai Jiang\\20834939\\t57jiang@uwaterloo.ca}
+
+\date{\today}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newcommand{\rr}{\mathbb{R}}
+
+\newcommand{\al}{\alpha}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\aff}{aff}
+
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction \& objective}\label{section-introduction}
+For the purpose of this project, the objective is to consider various macroeconomic factors, such as the interest rate, GDP growth rate, Consumer Confidence Index (CPI), with an effect on the country wide housing price index. We would subjectively select four individual Southeast Asian countries suitable to represent the overall four national economics level categories ranked by the World Bank. Giving the covid-19 contingency around the world, we would also like to make certain adjustment to the model used to seek a hint on the overall cross-sectional impact.
+
+Target Countries: Japan, People’s Republic of China, Philippine, and Nepal (In descending order of the economics level).
+
+\section{Proposed Model}\label{section-proposedmodel}
+$y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_nx_n + \epsilon$
+
+Initially, we choose total population, population density, urban population percentage, unemployment rate, real estate activities, taxes on property, per capita GDP, household final consumption, interest rate\citep{10.2307/23606731, 10.2139/ssrn.2431627, aei297454} as independent variables($x_i$). Dependent variable($y$) is the house price index.
+
+\section{Modeling data}\label{section-proposedmodel}
+In this section, we plan to briefly walk through the data modeling and analysis steps which will contribute towards the final delieverable. Using the data from USA as an example, we collected the data of the annual housing price index, GPD per capital, Unemployement rate, and number of building permits.
+
+\begin{figure}[H]
+\captionsetup[subfigure]{labelformat=empty}
+\centering
+\subfloat[]{\includegraphics[width=0.24\textwidth]{./image/price_index.png}}
+\subfloat[] {\includegraphics[width=0.24\textwidth]{./image/Gdp.png}}
+\subfloat[] {\includegraphics[width=0.24\textwidth]{./image/Unemployment.png}}
+\subfloat[] {\includegraphics[width=0.24\textwidth]{./image/building_permit.png}}
+\end{figure}
+
+As shown above, the housing price has an overall uptrend, with a periodic recession during the 2008 financial crisis. A similar pattern appeals to the growth of GDP per capita. On the other hand, the national unemployment rate and the number of issued building permits are cyclical under the influence of the national economic, world economic environment, and other factors. Although displayed differently, we can still capture similarity characteristics. For instance, unemployment is recorded at a historical high during the financial crisis(The unemployment rate is a lagging indicator of the business cycle. Therefore, we see the historical high is recorded in 2010, but the upward trend obviously started at approximately coincide with the crisis). In the same way, a pattern can also seem for building permits. 
+Hence, we will choose these three mentioned factors as the independent variables for the HPI in the model and analysis of the data based upon it.  
+
+\section{Data Tables and variable discription}\label{section-datatable}
+
+\begin{table}[H]
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Variable Name}                                                                              & \textbf{Description} \\ \hline
+\begin{tabular}[c]{@{}c@{}}GDP per capita, \\ current U.S. dollars\end{tabular}                     & Ratio                \\ \hline
+\begin{tabular}[c]{@{}c@{}}Household consumption \\ as percent of GDP\end{tabular}                  & Ratio                \\ \hline
+Unemployment rate                                                                                   & Ratio                \\ \hline
+Personal income tax rate                                                                            & Ratio                \\ \hline
+\begin{tabular}[c]{@{}c@{}}Taxes on goods \\ and services, percent \\ of total revenue\end{tabular} & Ratio                \\ \hline
+\begin{tabular}[c]{@{}c@{}}Real interest rate: \\ Bank lending rate \\ minus inflation\end{tabular} & Ratio                \\ \hline
+\begin{tabular}[c]{@{}c@{}}Population size, \\ in millions\end{tabular}                             & Ordinal              \\ \hline
+\begin{tabular}[c]{@{}c@{}}Percent urban \\ population\end{tabular}                                 & Ratio                \\ \hline
+\begin{tabular}[c]{@{}c@{}}Population density, \\ people per square km\end{tabular}                 & Ratio                \\ \hline
+Annual HPI                                                                                          & Ratio                \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{flushleft}
+\begin{tabular}{lrrrr}
+\toprule
+{} & \multicolumn{4}{l}{GDP per capita, current U.S. dollars} \\
+{} &                                 mean &       min &       max &          std \\
+Country     &                                      &           &           &              \\
+\midrule
+China       &                          7307.242727 &   3832.24 &  10261.68 &  2081.428551 \\
+India       &                          1619.529091 &   1101.96 &   2104.15 &   308.639618 \\
+Japan       &                         41070.663636 &  34524.47 &  48603.48 &  4334.089586 \\
+Philippines &                          2821.324545 &   1905.89 &   3485.08 &   468.083442 \\
+\bottomrule
+\end{tabular}
+
+\vspace{2em}
+
+\begin{tabular}{lrrrr}
+\toprule
+{} & \multicolumn{4}{l}{Household consumption as percent of GDP} \\
+{} &                                    mean &    min &    max &       std \\
+Country     &                                         &        &        &           \\
+\midrule
+China       &                               36.779091 &  34.33 &  38.67 &  1.680770 \\
+India       &                               57.820000 &  54.72 &  60.24 &  1.754685 \\
+Japan       &                               57.220000 &  55.44 &  58.96 &  1.431642 \\
+Philippines &                               72.208182 &  70.19 &  73.21 &  0.859032 \\
+\bottomrule
+\end{tabular}
+
+\vspace{2em}
+
+\begin{tabular}{lrrrr}
+\toprule
+{} & \multicolumn{4}{l}{Unemployment rate} \\
+{} &              mean &   min &   max &       std \\
+Country     &                   &       &       &           \\
+\midrule
+China       &          4.524545 &  4.28 &  4.72 &  0.131329 \\
+India       &          5.542727 &  5.33 &  5.67 &  0.121416 \\
+Japan       &          3.691818 &  2.29 &  5.10 &  0.999488 \\
+Philippines &          3.134545 &  2.15 &  3.86 &  0.597518 \\
+\bottomrule
+\end{tabular}
+
+\vspace{2em}
+
+\begin{tabular}{lrrrr}
+\toprule
+{} & \multicolumn{4}{l}{Personal income tax rate} \\
+{} &                     mean &   min &   max &       std \\
+Country     &                          &       &       &           \\
+\midrule
+China       &                45.000000 &  45.0 &  45.0 &  0.000000 \\
+India       &                33.363636 &  30.0 &  36.0 &  2.766685 \\
+Japan       &                52.454545 &  50.0 &  56.0 &  2.841255 \\
+Philippines &                32.545455 &  32.0 &  35.0 &  1.213560 \\
+\bottomrule
+\end{tabular}
+
+\vspace{2em}
+
+\begin{tabular}{lrrrr}
+\toprule
+{} & \multicolumn{4}{l}{Taxes on goods and services, percent of total revenue} \\
+{} &                                                  mean &    min &    max &        std \\
+Country     &                                                       &        &        &            \\
+\midrule
+China       &                                          46.751818 &  32.88 &  63.37 &  13.755032 \\
+India       &                                          27.733636 &  21.68 &  31.76 &   3.586517 \\
+Japan       &                                          36.270000 &  32.73 &  38.52 &   1.661614 \\
+Philippines &                                          25.441818 &  22.67 &  27.28 &   1.401990 \\
+\bottomrule
+\end{tabular}
+
+\vspace{2em}
+
+\begin{tabular}{lrrrr}
+\toprule
+{} & \multicolumn{4}{l}{Real interest rate: Bank lending rate minus inflation} \\
+{} &                                                  mean &   min &   max &       std \\
+Country     &                                                       &       &       &           \\
+\midrule
+China       &                                           2.354545 & -1.40 &  5.53 &  2.353985 \\
+India       &                                           4.380000 & -1.98 &  7.56 &  2.846601 \\
+Japan       &                                           1.348182 & -0.98 &  3.56 &  1.429467 \\
+Philippines &                                           3.963636 &  2.29 &  6.34 &  1.504980 \\
+\bottomrule
+\end{tabular}
+
+\vspace{2em}
+
+\begin{tabular}{lrrrr}
+\toprule
+{} & \multicolumn{4}{l}{Population size, in millions} \\
+{} &                         mean &      min &      max &        std \\
+Country     &                              &          &          &            \\
+\midrule
+China       &                  1364.741818 &  1331.26 &  1397.71 &  22.591435 \\
+India       &                  1294.262727 &  1217.73 &  1366.42 &  49.124745 \\
+Japan       &                   127.274545 &   126.26 &   128.07 &   0.601438 \\
+Philippines &                   100.386364 &    92.41 &   108.12 &   5.253632 \\
+\bottomrule
+\end{tabular}
+
+\vspace{2em}
+
+\begin{tabular}{lrrrr}
+\toprule
+{} & \multicolumn{4}{l}{Percent urban population} \\
+{} &                     mean &    min &    max &       std \\
+Country     &                          &        &        &           \\
+\midrule
+China       &                54.210000 &  47.88 &  60.31 &  4.120017 \\
+India       &                32.442727 &  30.59 &  34.47 &  1.286826 \\
+Japan       &                91.204545 &  89.99 &  91.70 &  0.478359 \\
+Philippines &                46.128182 &  45.33 &  47.15 &  0.625297 \\
+\bottomrule
+\end{tabular}
+
+\vspace{2em}
+
+\begin{tabular}{lrrrr}
+\toprule
+{} & \multicolumn{4}{l}{Population density, people per square km} \\
+{} &                                     mean &  min &  max &        std \\
+Country     &                                          &      &      &            \\
+\midrule
+China       &                               145.272727 &  142 &  148 &   2.327699 \\
+India       &                               434.636364 &  410 &  455 &  15.279219 \\
+Japan       &                               349.272727 &  347 &  351 &   1.420627 \\
+Philippines &                               336.000000 &  310 &  358 &  16.540859 \\
+\bottomrule
+\end{tabular}
+
+\vspace{2em}
+
+\begin{tabular}{lrrrr}
+\toprule
+{} & \multicolumn{4}{l}{Annual HPI} \\
+{} &        mean &    min &     max &        std \\
+Country     &             &        &         &            \\
+\midrule
+China       &  113.938182 &  94.76 &  139.24 &  14.024913 \\
+India       &  200.740909 &  89.42 &  291.59 &  71.904262 \\
+Japan       &  104.033636 &  98.27 &  112.84 &   5.198198 \\
+Philippines &  160.984545 &  98.40 &  296.50 &  61.288144 \\
+\bottomrule
+\end{tabular}
+\end{flushleft}
+
+\section{Certainty of Variable}\label{section-Certainty}
+HPI is a commonly used indicator by investors to keep a palus on the broader economic trend. In the data source we found, HPI is displayed quarterly. Therefore we chose the number in December to represent the current year's change in price by the rule of the laspeyres index. The rise and fall is interrelated with the economic. In general, price rise may be interpreted as a form of accumulating wealth from the day-to-day operation. Hence such events often leads to lower unemployment rate and high Consumer Confidence Index (CCI) that leads to high consumptions. Furthermore, it paves the way for a boost in the domestic aggregate demand and GDP\citep{aei297454}. In purpose of this project, my team would select independent variables that have direct implications on the domestic household disposable income level. Factors choosen are listed and described below. 
+\begin{itemize}
+\item Demand variables: GDP in the form of \(GDP = C + I + G - (X-M)\) where is C is household consumption, I is private domestic investment, G is net government expenditure, X-M represents the net of export. 
+\item Price variables: CPI and GDP deflator where as \(deflator = (Nominal GDP / Real GPD) * 100 \)
+\item Interest rates (Real): \(real interest rate = nominal interest rate - inflation rate\) where the inflation rate captures the percentage change in the CPI and nominal interest rate shows the domestica policy rate set by each domestic monetary agency. 
+\item Mortgage loan and unemployment rate as representation of CCI
+\item For taxes, a few illustrative items that are related to household disposable income were chosen from the data base. Such as personal income tax rate, tax on goods and services.
+\item For each country, we also included total population size, percent urban population, and population density. These elements were chosen because a higher population, usually leads to high density which would increase housing prices. Besides, the urban population also provides a significant contribution to house prices for it's a common scene that metropolitan has a higher housing price than the countryside.
+\item Data Source: 
+    \begin{itemize}
+        \item \href{https://kidb.adb.org/kidb/onlineQuery}{KIDB: Key indicators regarding people, economy, transport, energy, environment, government}
+        \item \href{https://www.theglobaleconomy.com/}{Global Economy}
+    \end{itemize}
+
+\end{itemize}     
+
+\section{Check Normality of the Dependent Variable}\label{Normality Check}
+We use Kolmolgorov-Smirnoff test to check normality of the dependent variable.
+$D=\underset{1 \leq i \leq N}{\max}(F(Y_i)-\frac{i-1}{N},\frac{i}{N}-F(Y_i))$
+
+\bibliographystyle{apalike}
+\bibliography{references}
+\end{document}

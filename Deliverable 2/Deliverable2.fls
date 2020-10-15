@@ -100,6 +100,8 @@ INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/float/float.sty
 INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/float/float.sty
 INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/natbib/natbib.sty
 INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/natbib/natbib.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/booktabs/booktabs.sty
+INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/booktabs/booktabs.sty
 INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 INPUT /usr/local/texlive/2017basic/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 INPUT Deliverable2.aux
@@ -169,6 +171,7 @@ INPUT ./image/Unemployment.png
 INPUT ./image/building_permit.png
 INPUT ./image/building_permit.png
 INPUT ./image/building_permit.png
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm
 INPUT Deliverable2.bbl
 INPUT Deliverable2.bbl
@@ -177,6 +180,7 @@ INPUT Deliverable2.aux
 INPUT ./Deliverable2.out
 INPUT ./Deliverable2.out
 INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/local/texlive/2017basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb

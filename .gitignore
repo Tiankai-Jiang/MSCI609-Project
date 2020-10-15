@@ -9,3 +9,5 @@
 *.pdf
 
 .ipynb_checkpoints/
+*.fdb_latexmk
+*.fls

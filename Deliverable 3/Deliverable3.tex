@@ -251,10 +251,99 @@ HPI is a commonly used indicator by investors to keep a palus on the broader eco
 
 \end{itemize}     
 
-\section{Check Normality of the Dependent Variable}\label{Normality Check}
+\section{Check Normality of the Dependent Variable}\label{normality_check}
 We use Kolmolgorov-Smirnoff test to check normality of the dependent variable.
-$D=\underset{1 \leq i \leq N}{\max}(F(Y_i)-\frac{i-1}{N},\frac{i}{N}-F(Y_i))$
+$$D=\underset{1 \leq i \leq N}{\max}(F(Y_i)-\frac{i-1}{N},\frac{i}{N}-F(Y_i))$$
+$H_0$: The variable is normally distributed.\\
+$H_a$: The variable is not normally distributed.\\
+In the table below, 
+$$Cumulative=Rank$$ 
+$$Expected=\frac{Cumulative}{Count}$$ 
+$$(Rank-1)/n=\frac{Cumulative-1}{Count}$$
+$$Actual=NORM.DIST(x, {\bar X}, stddev, true)$$
+$$Difference=\abs{Actual-(Rank-1)/n}$$
+Maximum=MAX(Difference), which is the result of the Kolmolgorov-Smirnoff test. For China, India, Japan, Philippines, the result are \textbf{0.1873, 0.1224, 0.1338, 0.1536} respectively. According to the One-Sample Kolmogorov-Smirnov Table, when $n=11$ and $\alpha=0.05$, the critical value $D_{n,a}=0.3912$. All four results are less than the critical value. Therefore, we failed to reject the $H_0$. The dependent variable is normally distributed.
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{./image/KSTest.png}
+\end{center}
+\end{figure}
 
+\section{Mean Comparison of the Dependent Variable}\label{mean_comparison}
+Perform one-tail two sample independent t-test on all four countries. Therefore, there are 6 comparisons in total.\\
+Let $\mu_1$ denotes the average HPI of the country in the first column, $\mu_2$ denotes the average HPI of the country in the second column.\\
+$H_0: \mu_1\geq \mu_2$\\
+$H_a: \mu_1< \mu_2$\\
+$df=11+11-2=20$, the critical value for an one-tail t-test when $\alpha=0.05$ is $t_{crit}=1.725$.\\
+The results are as follows:
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{./image/TTest.png}
+\end{center}
+\end{figure}
+
+For the comparison between India and Philippines, $t_{obj}=1.3956<t_{crit}$. We failed to reject $H_0$ and conclude that there is not enough evidence to show that the average HPI of Philippines is greater than that of India. For all other five comparisions, $t_{obj}>t_{crit}$, we reject $H_0$ and conclude that the HPI of the country in the second column is indeed greater than that in the first column.
+
+\section{Regression Analysis}\label{regression_analysis}
+We have mentioned in the previous section that there are lots of independent variables that may influence the house price index. It is obvious that we cannot use all of them for regression. Therefore, the first step is to select the proper independent variables. We have the following constraints:
+\begin{enumerate}
+    \item It is not possible to fit all four countries in a same linear function with the same coefficients, however, we should at least use the same independent variables for four regressions. Otherwise, the results are just four separate models without comparability.
+    \item When selecting the independent variables for regression, any selected variable should be strongly correlated with HPI.
+    \item When selecting the independent variables for regression, all selected variables should not be strongly correlated with each other.
+\end{enumerate}
+Our strategy is:
+\begin{enumerate}
+    \item We construct the Pearson Correlation Table of all variables for all four countries. And remove a variable if in any tables, the correlation between that variable and the annual HPI is less or equal to 0.5.
+    \item After the first step, all variables left are strongly correlated with annual HPI. We construct the Pearson Correlation Table again, this time, for all independent variables left. And we only pick one from a group, if that group of variables are strongly correlated with each other (here we pick r=0.7). 
+\end{enumerate}
+We use China as an example, below is the Pearson Correlation Table constructed in step 1. Here actually we only use the annual HPI row (indicate by a green arrow):
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=1.0\textwidth]{./image/CorrelationTable1.png}
+\end{center}
+\end{figure}
+After doing this step for all four countries, we plot the correlation table for all variables left:
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=1.0\textwidth]{./image/CorrelationTable2.png}
+\end{center}
+\end{figure}
+Lots of independent variables are strongly correlated, which does not satisfy the assumption of linear regression. Here we pick only Unemployment rate and Government spending as percent of GDP (row 2 and row 3).
+
+Using the OLS funtion in python package statsmodels, we perform linear regression for four countries respectively, below is the result:
+
+Japan:
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{./image/Reg_JPN.png}
+\end{center}
+\end{figure}
+
+China:
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{./image/Reg_CHN.png}
+\end{center}
+\end{figure}
+
+Philippines:
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{./image/Reg_PHL.png}
+\end{center}
+\end{figure}
+
+India:
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{./image/Reg_IND.png}
+\end{center}
+\end{figure}
+
+For Philippines, the P-value of the constant is 0.774, which is abnormal. That's because the unemployment rate and government spending are strongly correlated in Philippines. However, as we are finding an universal model for all four countries, we have to make some compromise. For now, this is the temporary solution, maybe we can find a better model later.
+
+\section{Residuals Analysis}\label{residuals_analysis}
+We can get the residual of the regression from model.resid if using OLS in statsmodels. Checking the normality of the residual is the same as checking the normality of the dependent variable. We will leave out the manual calculation and use kstest package and shapiro package from scipy.stats directly.
 \bibliographystyle{apalike}
 \bibliography{references}
 \end{document}

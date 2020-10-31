@@ -40,6 +40,8 @@
 
 \maketitle
 
+For content of Deliverable 3, please go directly to Section \ref{normality_check}
+
 \section{Introduction \& objective}\label{section-introduction}
 For the purpose of this project, the objective is to consider various macroeconomic factors, such as the interest rate, GDP growth rate, Consumer Confidence Index (CPI), with an effect on the country wide housing price index. We would subjectively select four individual Southeast Asian countries suitable to represent the overall four national economics level categories ranked by the World Bank. Giving the covid-19 contingency around the world, we would also like to make certain adjustment to the model used to seek a hint on the overall cross-sectional impact.
 
@@ -291,7 +293,7 @@ We have mentioned in the previous section that there are lots of independent var
     \item When selecting the independent variables for regression, any selected variable should be strongly correlated with HPI.
     \item When selecting the independent variables for regression, all selected variables should not be strongly correlated with each other.
 \end{enumerate}
-Our strategy is:
+Our strategy is\citep{Feature}:
 \begin{enumerate}
     \item We construct the Pearson Correlation Table of all variables for all four countries. And remove a variable if in any tables, the correlation between that variable and the annual HPI is less or equal to 0.5.
     \item After the first step, all variables left are strongly correlated with annual HPI. We construct the Pearson Correlation Table again, this time, for all independent variables left. And we only pick one from a group, if that group of variables are strongly correlated with each other (here we pick r=0.7). 
@@ -344,6 +346,58 @@ For Philippines, the P-value of the constant is 0.774, which is abnormal. That's
 
 \section{Residuals Analysis}\label{residuals_analysis}
 We can get the residual of the regression from model.resid if using OLS in statsmodels. Checking the normality of the residual is the same as checking the normality of the dependent variable. We will leave out the manual calculation and use kstest package and shapiro package from scipy.stats directly.
+
+The result of the Kolmolgorov-Smirnoff test is:
+\begin{itemize}
+    \item Japan: KstestResult(statistic=0.1599800489339369, pvalue=0.9409537714586017)
+    \item China: KstestResult(statistic=0.319720396192871, pvalue=0.16866155548919362)
+    \item Philippines: KstestResult(statistic=0.5445262080791782, pvalue=0.0013854288164271162)
+    \item India: KstestResult(statistic=0.5454545454545454, pvalue=0.0013494428782933796)
+\end{itemize}
+
+which means that except for Japan, the residuals of other three countries are not normally distributed.
+
+For the purpose of this project, heteroskedasticity represents the level of volatility in the market. For example, there exists an correlation between the housing price and inflation, money supply. Although we may assume the real price of the HPI remains constant during the observation, the norminal price, which is reflected in HPI, continuous to grow. Hence, we choose to believe the volitity would increase along the HPI\citep{Heteroskedasticity1,Heteroskedasticity2}.
+
+We create the residual plots for all four countries:
+
+Japan:
+\begin{figure}[H]
+\captionsetup[subfigure]{labelformat=empty}
+\centering
+\subfloat[]{\includegraphics[width=0.49\textwidth]{./image/Resid_gs_JPN.png}}
+\subfloat[] {\includegraphics[width=0.49\textwidth]{./image/Resid_unemployment_JPN.png}}
+\end{figure}
+
+China:
+\begin{figure}[H]
+\captionsetup[subfigure]{labelformat=empty}
+\centering
+\subfloat[]{\includegraphics[width=0.49\textwidth]{./image/Resid_gs_CHN.png}}
+\subfloat[] {\includegraphics[width=0.49\textwidth]{./image/Resid_unemployment_CHN.png}}
+\end{figure}
+
+Philippines:
+\begin{figure}[H]
+\captionsetup[subfigure]{labelformat=empty}
+\centering
+\subfloat[]{\includegraphics[width=0.49\textwidth]{./image/Resid_gs_PHL.png}}
+\subfloat[] {\includegraphics[width=0.49\textwidth]{./image/Resid_unemployment_PHL.png}}
+\end{figure}
+
+India:
+\begin{figure}[H]
+\captionsetup[subfigure]{labelformat=empty}
+\centering
+\subfloat[]{\includegraphics[width=0.49\textwidth]{./image/Resid_gs_IND.png}}
+\subfloat[] {\includegraphics[width=0.49\textwidth]{./image/Resid_unemployment_IND.png}}
+\end{figure}
+
+For both unemployment rate and government spending as percent of GDP, the residuals for all four countries randomly scattered around zero (the upper right plots), which is an indication that heteroscedasticity is not a problem with either predictor variable in the model\citep{Residual1}.
 \bibliographystyle{apalike}
 \bibliography{references}
+
+% https://stackoverflow.com/questions/39132469/how-to-interpret-scipy-stats-kstest-and-ks-2samp-to-evaluate-fit-of-data-t
+
+
 \end{document}

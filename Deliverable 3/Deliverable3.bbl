@@ -1,0 +1,35 @@
+\begin{thebibliography}{}
+
+\bibitem[Emiris, 2016]{aei297454}
+Emiris, M. (2016).
+\newblock A dynamic factor model for forecasting house prices in belgium.
+  national bank of belgium working paper no. 313.
+
+\bibitem[Goodhart and Hofmann, 2008]{10.2307/23606731}
+Goodhart, C. and Hofmann, B. (2008).
+\newblock House prices, money, credit, and the macroeconomy.
+\newblock {\em Oxford Review of Economic Policy}, 24(1):180--205.
+
+\bibitem[Hayes, 2020]{Heteroskedasticity1}
+Hayes, A. (2020).
+\newblock Heteroskedasticity-investopedia.
+
+\bibitem[Nguyen, 2020]{Heteroskedasticity2}
+Nguyen, J. (2020).
+\newblock Is there a correlation between inflation and home
+  prices?-investopedia.
+
+\bibitem[Plakandaras et~al., 2014]{10.2139/ssrn.2431627}
+Plakandaras, B., Gupta, R., Gogas, P., and Papadimitriou, T. (2014).
+\newblock Forecasting the u.s. real house price index.
+\newblock {\em SSRN Electronic Journal}.
+
+\bibitem[Shetye, 2019]{Feature}
+Shetye, A. (2019).
+\newblock Feature selection with sklearn and pandas.
+
+\bibitem[Zach, 2020]{Residual1}
+Zach (2020).
+\newblock How to {Create a Residual} plot in python.
+
+\end{thebibliography}

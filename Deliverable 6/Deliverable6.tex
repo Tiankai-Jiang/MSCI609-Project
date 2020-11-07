@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amscd, amsthm, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{commath}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{natbib}
+\usepackage{booktabs}
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\marginparwidth 40pt
+\marginparsep 10pt
+\topmargin -20pt
+\headsep 10pt
+\textheight 8.7in
+\textwidth 6.65in
+\linespread{1.5}
+
+\title{Economics Influence on Housing price Index within Southeast Asian Countries}
+\author{Steven Qin\\20819760\\s45qin@uwaterloo.ca \and Tiankai Jiang\\20834939\\t57jiang@uwaterloo.ca}
+
+\date{\today}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newcommand{\rr}{\mathbb{R}}
+
+\newcommand{\al}{\alpha}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\aff}{aff}
+
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}\label{introduction}
+TODO
+
+\section{Literature Review}\label{literature_review}
+(aei297454) proposed a joint model to address the relationship between residential property price and several macroeconomy indicators (e.g. mortgage loans, interest rates, the GDP and inflation rate), aiming to forcast both the housing price and the economy in Belgium. Their approach is to use a dynamic factor model estimated with maximum likelihood and the EM algorithm, in which they assume that HPI and other macroecomonic variables comove strongly. They assume HPI can be modelled as a sum of two components: a ``common component'' that is driven by an un observed factor such as business cycle, and an ``idiosycratic component'' that is uncorrelated with the common component. Their result shows that the prediction over 2008q1-2009q4 was relatively accurate during 2008 while it underestimated quarterly growth rates in 2009. The authors state that at this stage, it is still a reduced-form exercise and future works should focus on the discovery of shocks and their impact on HPI forecast.
+
+(GASPARENIENE2016122) discussed the macroeconomic factors and house price level in Lithuania. They first summarized factors that could influence the house price from 14 previous papers, including GDP, employment rate, interest rate and construction price, etc. Then, linear regression and methods for correlation were performed, accessing the impact of those factors on the average price of two-room apartments in Lithuania from 2008 to 2015. The result shows that the availability of bank loans and interest rate account most for the house price level, explain the variation of the house price by 79.03\% and 49.23\%, the inflation rate explains the price by 39.35\% and GDP has the most insignificant impact amount these four variables in Lithuania.
+
+(10.2139/ssrn.2431627) stated that the issue among most house price forecasting models is that almost all time series are aggregations of rather volatile elements, which introducing great error and making it difficult to generate an accurate model. In the paper, a three step forecasting methodology was proposed to address this issue. First, a new method called Ensemble Empirical Mode Decomposition (EEMD) was used to smooth the original series data. Then, desired variables were selected using the Elastic Net approach. Finally, a Support Vector Regression model was constructed for forecasting. Using HPI data from 1989 to 2012 in the US, the result shows that their model outperforms all competing models in both in-sample and out-of-sample forecasting and the model can make early accurate detection of the 2006-2009 price downturn.
+
+(GUPTA20112013) compared several time series models for HPI forecasting including dynamic stochastic general equilibrium (DSGE) model and the variations of vector autoregressive (VAR) models, such as Bayesian VAR (BVAR) models, Bayesian factor augmented VAR (BFAVAR), and small- and large-scale BVAR (SBVAR and LBVAR) models. There are 0 to 120 macroeconomy factors being used in different models to predict the HPI in the US. Using the period of 1976q1 to 2000q4 as the in-sample period and 2001q1 to 2005q2 as the out-of-sample horizon, they found that each model performs better in different period and different conditions. They conjecture that the utilization of fundamental economic variables may improve the forecasting performance over models that do not use such data. But the gains do not prove statistically significant. Therefore, additional research is required.
+
+Inspired by the subprime mortgage crisis developed in 2007 and 2008, which was triggered by the 2005 housing bubble burst, (PAN20131720) investigate the relationship between the bank stability and the house prices in the US. Factors such as non-performing loans, equity ratio, cost-income ratio and return on assets were selected. A threshold model was applied in the experiment. Their result shows that personal income growth rate is considered as the threshold variable which interacts with the house price indicators in the threshold models. And the house price increase with rising demand due to income and labor force growth. The result also indicated a negative correlation between bank stability and house price.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+\end{document}

@@ -84,6 +84,182 @@ While most previous reseach focused on the house price in one country, (RePEc:pr
 Finally, (PropertyPriceEurope) presented Artificial Neural Networks (ANN) model to select macroeconomic factors that could affect real estates. They chose 14 macroeconomic factors (e.g. GDP, unemployment rate, CPI...) as alternative independent variables and the house price index in Poland and Italy as dependent variables. Although ANN will not be used in this paper, it is usually provided with high accuracy and its result could be referred as we choosing independent variables. They found for the developing country, i.e. Poland, unemployment rate and population growth are the key factors that influence the house price. Whereas for developed country, i.e. Italy, consumption expenditure, household consumption expenditure and housing expenses have a major effect on the house price.
 
 \section{Methods}\label{methods}
+In this section, we will first talk about the candidate independent variables, their relationship with annual HPI and why do we select them. Then, the mathematical model will be proposed. Finally, since there are too many candidate variables, a reliable method will be proposed to filter those variables.
+
+\subsection{Variables}\label{variables}
+TODO
+
+\subsection{Model Description}\label{model_description}
+There are three methods mentioned in section \ref{literature_review} to analyze and predict annual HPI data, namely, linear regression, time series analysis and artificial neural network. We chose to use linear regression, like the one that was used in (GASPARENIENE2016122). The model is shown as follows:
+$$y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_nx_n + \epsilon$$
+in which $y$ represents the annual HPI and each $x$ could be a candidate variable. The $\beta$s are the values we desire in the regression.
+
+The reason we chose linear regression instead of the other two methods is because those two methods require a lot more data. Generally, all papers that did not use linear regression used data from 1970s to 2010s. However, we only have 11 years of data of annual HPI, which is insufficient to perform those analysis. Also, as mentioned in section \ref{introduction}, we want to build an unified model for all four countries, which means we want to find the same independent variables for all four countries. Implementing a Vector Autoregressive model is too complicated for that.
+
+\subsection{Variables Selection}\label{variables_selection}
+We have mentioned in the previous section that there are lots of independent variables that may influence the house price index. It is obvious that we cannot use all of them for regression. Therefore, the first step is to select the proper independent variables. We have the following constraints:
+\begin{enumerate}
+    \item It is not possible to fit all four countries in a same linear function with the same coefficients, however, we should at least use the same independent variables for four regressions. Otherwise, the results are just four separate models without comparability.
+    \item When selecting the independent variables for regression, any selected variable should be strongly correlated with HPI.
+    \item When selecting the independent variables for regression, all selected variables should not be strongly correlated with each other.
+\end{enumerate}
+Our strategy is\citep{Feature}:
+\begin{enumerate}
+    \item We construct the Pearson Correlation Table of all variables for all four countries. And remove a variable if in any tables, the correlation between that variable and the annual HPI is less or equal to 0.5.
+    \item After the first step, all variables left are strongly correlated with annual HPI. We construct the Pearson Correlation Table again, this time, for all independent variables left. And we only pick one from a group, if that group of variables are strongly correlated with each other (here we pick r=0.7). 
+\end{enumerate}
+
+We use China as an example, below is the Pearson Correlation Table constructed in step 1. Here actually we only use the annual HPI row (indicate by a green arrow):
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=1.0\textwidth]{./image/CorrelationTable1.png}
+\end{center}
+\end{figure}
+After doing this step for all four countries, we plot the correlation table for all variables left:
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=1.0\textwidth]{./image/CorrelationTable2.png}
+\end{center}
+\end{figure}
+Lots of independent variables are strongly correlated, which does not satisfy the assumption of linear regression. Based on the results mentioned in the literature reviews, here we pick only Unemployment rate and Government spending as percent of GDP (row 2 and row 3).
+
+\section{Data}\label{data}
+We chose annual HPI as our dependent variable and based on the previous reserch, we chose 23 canditate variables for regression analysis. The relationship between those candidate variables and the annual HPI has been discussed in section \ref{methods}. The appendix contains a description of each variable, its type, how it was constructed and the data source. The table below shows the mean, standard deviation, minimum and maximum of each variable. We group the result by countries.
+\begin{table}[H]
+\begin{tabular}{lrrrr}
+\toprule
+{} Variable&        mean &        std &         min &         max \\
+\midrule
+Economic growth: the rate of change of real GDP    &       0.673 &      2.353 &      -5.420 &       4.190 \\
+Capital investment as percent of GDP               &      23.025 &      1.130 &      21.300 &      24.320 \\
+Exchange rate: local currency units per U.S. do... &     100.538 &     13.793 &      79.790 &     121.040 \\
+Unemployment rate                                  &       3.692 &      0.999 &       2.290 &       5.100 \\
+Terms of trade, base year = 2000                   &      65.403 &      5.525 &      58.440 &      74.370 \\
+Government spending as percent of GDP              &      19.893 &      0.262 &      19.490 &      20.250 \\
+Economic growth forecast                           &       0.672 &      2.353 &      -5.420 &       4.190 \\
+Internet users, percent of population              &      85.934 &      6.391 &      78.000 &      93.180 \\
+Oil reserves, billion barrels                      &       0.040 &      0.000 &       0.040 &       0.040 \\
+Crop production index (2004-2006 = 100)            &      91.250 &      4.264 &      81.800 &      96.700 \\
+Banking system capital, percent of assets          &       5.270 &      0.412 &       4.300 &       5.630 \\
+Stock market capitalization as percent of GDP      &      89.781 &     26.454 &      54.010 &     127.860 \\
+High technology exports                            &  112398.783 &  12738.820 &   98537.260 &  133518.230 \\
+Percent urban population                           &      91.205 &      0.478 &      89.990 &      91.700 \\
+Gross Domestic Product, billions of 2010 U.S. d... &    5908.509 &    231.440 &    5470.800 &    6210.700 \\
+Household consumption as percent of GDP            &      57.198 &      1.461 &      55.339 &      58.960 \\
+Household debt to GDP, in percent                  &      53.427 &     17.807 &       0.000 &      62.500 \\
+Inflation: percent change in the Consumer Price... &       0.300 &      1.079 &      -1.400 &       2.800 \\
+Imports of goods and services, billion USD         &     852.938 &    119.272 &     626.200 &     998.180 \\
+Income, profits, and capital gains taxes: perce... &      47.820 &      2.358 &      42.110 &      50.960 \\
+New commercial vehicle sales, numbers per year     &  809939.636 &  65941.198 &  701188.000 &  894125.000 \\
+Banking system z-scores                            &      15.349 &      2.031 &      10.330 &      18.013 \\
+\bottomrule
+\end{tabular}
+\caption{Mean, Standard deviation, Min and Maximum of each variable, Japan}
+\label{tab:describe_jpn}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{lrrrr}
+\toprule
+{} Variable&         mean &         std &          min &          max \\
+\midrule
+Economic growth: the rate of change of real GDP    &        7.849 &       1.413 &        6.110 &       10.640 \\
+Capital investment as percent of GDP               &       44.761 &       1.685 &       42.630 &       46.660 \\
+Exchange rate: local currency units per U.S. do... &        6.534 &       0.277 &        6.140 &        6.910 \\
+Unemployment rate                                  &        4.525 &       0.131 &        4.280 &        4.720 \\
+Terms of trade, base year = 2000                   &       85.492 &       5.045 &       79.050 &       92.530 \\
+Government spending as percent of GDP              &       15.854 &       0.736 &       14.590 &       16.919 \\
+Economic growth forecast                           &        7.820 &       1.404 &        6.110 &       10.560 \\
+External debt, percent of Gross National Income    &       13.532 &       2.100 &        8.920 &       16.950 \\
+Internet users, percent of population              &       47.054 &      10.472 &       28.900 &       62.712 \\
+Oil reserves, billion barrels                      &       22.919 &       3.194 &       16.000 &       25.930 \\
+Crop production index (2004-2006 = 100)            &      137.225 &      12.943 &      116.800 &      156.683 \\
+Banking system capital, percent of assets          &        7.448 &       1.282 &        5.600 &        9.341 \\
+Stock market capitalization as percent of GDP      &       58.013 &      12.249 &       41.260 &       74.020 \\
+High technology exports                            &   606382.805 &  114654.551 &   359273.920 &   759591.883 \\
+Percent urban population                           &       54.210 &       4.120 &       47.880 &       60.310 \\
+Gross Domestic Product, billions of 2010 U.S. d... &     8414.664 &    1982.378 &     5502.000 &    11537.200 \\
+Household consumption as percent of GDP            &       36.858 &       1.790 &       34.330 &       39.433 \\
+Household debt to GDP, in percent                  &       37.790 &      10.745 &       23.500 &       53.793 \\
+Inflation: percent change in the Consumer Price... &        2.291 &       1.511 &       -0.700 &        5.600 \\
+Imports of goods and services, billion USD         &     1980.514 &     437.674 &     1042.530 &     2548.880 \\
+Income, profits, and capital gains taxes: perce... &       22.371 &       3.175 &       18.864 &       28.270 \\
+New commercial vehicle sales, numbers per year     &  3933418.000 &  359135.486 &  3313479.000 &  4370795.000 \\
+Banking system z-scores                            &       20.852 &       2.269 &       17.130 &       24.116 \\
+\bottomrule
+\end{tabular}
+\caption{Mean, Standard deviation, Min and Maximum of each variable, China}
+\label{tab:describe_chn}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{lrrrr}
+\toprule
+{} Variable&        mean &        std &       min &        max \\
+\midrule
+Economic growth: the rate of change of real GDP    &       5.950 &      1.759 &      1.45 &       7.33 \\
+Capital investment as percent of GDP               &      22.235 &      3.120 &     17.43 &      27.15 \\
+Exchange rate: local currency units per U.S. do... &      46.639 &      3.682 &     42.23 &      52.66 \\
+Unemployment rate                                  &       3.135 &      0.598 &      2.15 &       3.86 \\
+Terms of trade, base year = 2000                   &      79.358 &      3.932 &     73.52 &      84.20 \\
+Government spending as percent of GDP              &      10.863 &      0.913 &      9.71 &      12.53 \\
+Economic growth forecast                           &       5.951 &      1.760 &      1.45 &       7.34 \\
+External debt, percent of Gross National Income    &      23.135 &      3.074 &     20.13 &      28.49 \\
+Internet users, percent of population              &      39.152 &     15.417 &      9.00 &      60.05 \\
+Oil reserves, billion barrels                      &       0.140 &      0.000 &      0.14 &       0.14 \\
+Crop production index (2004-2006 = 100)            &     114.112 &      3.567 &    109.60 &     119.30 \\
+Banking system capital, percent of assets          &      10.213 &      0.719 &      9.50 &      11.70 \\
+Stock market capitalization as percent of GDP      &      76.018 &     10.980 &     49.03 &      88.41 \\
+High technology exports                            &   33703.015 &    283.599 &  33502.48 &   33903.55 \\
+Percent urban population                           &      46.128 &      0.625 &     45.33 &      47.15 \\
+Gross Domestic Product, billions of 2010 U.S. d... &     269.055 &     55.812 &    194.10 &     360.90 \\
+Household consumption as percent of GDP            &      72.208 &      0.859 &     70.19 &      73.21 \\
+Household debt to GDP, in percent                  &       0.000 &      0.000 &      0.00 &       0.00 \\
+Inflation: percent change in the Consumer Price... &       3.136 &      1.363 &      0.70 &       5.20 \\
+Imports of goods and services, billion USD         &      98.596 &     31.768 &     54.01 &     151.72 \\
+Income, profits, and capital gains taxes: perce... &      40.729 &      1.716 &     36.53 &      42.08 \\
+New commercial vehicle sales, numbers per year     &  142465.909 &  38579.063 &  86333.00 &  226384.00 \\
+Banking system z-scores                            &      18.112 &      1.127 &     16.19 &      20.71 \\
+\bottomrule
+\end{tabular}
+\caption{Mean, Standard deviation, Min and Maximum of each variable, Philippines}
+\label{tab:describe_phl}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{lrrrr}
+\toprule
+{} Variable&        mean &         std &        min &          max \\
+\midrule
+Economic growth: the rate of change of real GDP    &       6.845 &       1.266 &       5.02 &        8.500 \\
+Capital investment as percent of GDP               &      34.689 &       4.111 &      30.17 &       40.220 \\
+Exchange rate: local currency units per U.S. do... &      59.015 &       9.084 &      45.73 &       70.420 \\
+Unemployment rate                                  &       5.543 &       0.121 &       5.33 &        5.670 \\
+Terms of trade, base year = 2000                   &      97.596 &       6.501 &      89.99 &      108.190 \\
+Government spending as percent of GDP              &      10.847 &       0.483 &      10.30 &       11.770 \\
+Economic growth forecast                           &       7.113 &       1.644 &       4.18 &       10.260 \\
+External debt, percent of Gross National Income    &      20.443 &       1.949 &      17.52 &       23.300 \\
+Internet users, percent of population              &      17.412 &       8.497 &       5.12 &       32.000 \\
+Oil reserves, billion barrels                      &       5.235 &       0.539 &       4.42 &        5.680 \\
+Crop production index (2004-2006 = 100)            &     140.275 &      13.405 &     112.80 &      159.317 \\
+Banking system capital, percent of assets          &       7.108 &       0.205 &       6.70 &        7.390 \\
+Stock market capitalization as percent of GDP      &      76.156 &      13.504 &      55.25 &       97.390 \\
+High technology exports                            &   15466.125 &    3058.267 &   10778.73 &    20273.090 \\
+Percent urban population                           &      32.443 &       1.287 &      30.59 &       34.470 \\
+Gross Domestic Product, billions of 2010 U.S. d... &    2197.400 &     483.493 &    1544.40 &     2964.000 \\
+Household consumption as percent of GDP            &      57.820 &       1.755 &      54.72 &       60.240 \\
+Household debt to GDP, in percent                  &       9.841 &       0.838 &       8.90 &       11.300 \\
+Inflation: percent change in the Consumer Price... &       7.664 &       3.010 &       2.50 &       12.000 \\
+Imports of goods and services, billion USD         &     524.751 &      84.219 &     347.18 &      639.010 \\
+Income, profits, and capital gains taxes: perce... &      44.837 &       2.997 &      41.25 &       50.270 \\
+New commercial vehicle sales, numbers per year     &  730269.091 &  148067.419 &  449391.00 &  1005380.000 \\
+Banking system z-scores                            &      16.813 &       0.470 &      15.96 &       17.560 \\
+\bottomrule
+\end{tabular}
+\caption{Mean, Standard deviation, Min and Maximum of each variable, India}
+\label{tab:describe_ind}
+\end{table}
+
 \bibliographystyle{apalike}
 \bibliography{references}
 \end{document}

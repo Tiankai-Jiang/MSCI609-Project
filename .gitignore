@@ -7,6 +7,7 @@
 
 .idea/
 *.pdf
+!Papers/*.pdf
 
 .ipynb_checkpoints/
 *.fdb_latexmk

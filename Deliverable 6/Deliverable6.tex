@@ -261,6 +261,40 @@ Banking system z-scores                            &      16.813 &       0.470 &
 \label{tab:describe_ind}
 \end{table}
 
+\section{Results}\label{results}
+\subsection{Normality of the Dependent Variable}\label{normality_check}
+Kolmolgorov-Smirnoff test was used to check normality of the dependent variable.
+$$D=\underset{1 \leq i \leq N}{\max}(F(Y_i)-\frac{i-1}{N},\frac{i}{N}-F(Y_i))$$
+$H_0$: The variable is normally distributed.\\
+$H_a$: The variable is not normally distributed.\\
+For China, India, Japan, Philippines, the result are \textbf{0.1873, 0.1224, 0.1338, 0.1536} respectively. According to the One-Sample Kolmogorov-Smirnov Table (Appendix \ref{kstable}), when $n=11$ and $\alpha=0.05$, the critical value $D_{n,a}=0.3912$. All four results are less than the critical value. Therefore, we failed to reject the $H_0$. The dependent variable is normally distributed.
+
+\subsection{Mean Comparison of the Dependent Variable}\label{mean_comparison}
+One-tail two sample independent t-test was performed on all four countries. Therefore, there are 6 comparisons in total.\\
+Let $\mu_1$ denotes the average HPI of the country in the first column, $\mu_2$ denotes the average HPI of the country in the second column.\\
+$H_0: \mu_1\geq \mu_2$\\
+$H_a: \mu_1< \mu_2$\\
+$df=11+11-2=20$, the critical value for an one-tail t-test when $\alpha=0.05$ is $t_{crit}=1.725$.\\
+The results are as follows:
+\begin{table}[H]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Country A   & Country B   & $t_{obj}$ & $t_{crit}$ & result \\ \hline
+India       & Philippines & 1.395607763 & 0          & 0      \\ \hline
+Philippines & China       & 2.481775986 & 0          & 1      \\ \hline
+China       & Japan       & 2.196236113 & 0          & 1      \\ \hline
+Philippines & Japan       & 3.070888374 & 0          & 1      \\ \hline
+India       & China       & 3.929769778 & 0          & 1      \\ \hline
+India       & Japan       & 4.449066711 & 0          & 1      \\ \hline
+\end{tabular}
+\end{table}
+
+For the comparison between India and Philippines, $t_{obj}=1.3956<t_{crit}$. We failed to reject $H_0$ and conclude that there is not enough evidence to show that the average HPI of Philippines is greater than that of India. For all other five comparisions, $t_{obj}>t_{crit}$, we reject $H_0$ and conclude that the HPI of the country in the second column is indeed greater than that in the first column.
+
+\subsection{Regression and Residuals Analysis}\label{result_analysis}
+
+\section{Implications and conclusion}\label{conclusion}
+
 \newpage
 \bibliographystyle{apalike}
 \bibliography{references}
@@ -315,6 +349,12 @@ All data in this paper is from \href{https://www.theglobaleconomy.com/download-d
 
 \textbf{Banking system z-scores}: The index captures the probability of default of a country's banking system. Z-score compares the buffer of a country's banking system (capitalization and returns) with the volatility of those returns. Type: Ratio.
 
+\section{One-Sample Kolmogorov-Smirnov Table}\label{kstable}
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=1.0\textwidth]{./image/ks-table.png}
+\end{center}
+\end{figure}
 \end{appendices}
 
 \end{document}

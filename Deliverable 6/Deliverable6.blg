@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Deliverable6.aux
+The style file: apalike.bst
+Database file #1: references.bib
+Warning--entry type for "Feature" isn't style-file defined
+--line 49 of file references.bib
+You've used 14 entries,
+            1935 wiz_defined-function locations,
+            569 strings with 6147 characters,
+and the built_in function-call counts, 5311 in all, are:
+= -- 523
+> -- 189
+< -- 11
++ -- 64
+- -- 60
+* -- 469
+:= -- 930
+add.period$ -- 40
+call.type$ -- 14
+change.case$ -- 100
+chr.to.int$ -- 14
+cite$ -- 14
+duplicate$ -- 185
+empty$ -- 385
+format.name$ -- 88
+if$ -- 1035
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 11
+newline$ -- 71
+num.names$ -- 42
+pop$ -- 67
+preamble$ -- 1
+purify$ -- 100
+quote$ -- 0
+skip$ -- 145
+stack$ -- 0
+substring$ -- 438
+swap$ -- 12
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 84
+warning$ -- 0
+while$ -- 40
+width$ -- 0
+write$ -- 177
+(There was 1 warning)

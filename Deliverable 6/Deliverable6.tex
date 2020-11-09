@@ -111,10 +111,11 @@ Our strategy is\citep{Feature}:
     \item After the first step, all variables left are strongly correlated with annual HPI. We construct the Pearson Correlation Table again, this time, for all independent variables left. And we only pick one from a group, if that group of variables is strongly correlated with each other (here we pick r=0.7). 
 \end{enumerate}
 
-We use China as an example (Figure \ref{fig:pearson1}). Here actually we only use the annual HPI row (indicate by a green arrow):
+We use China as an example for step 1 (Figure \ref{fig:pearson1}). Here actually we only use the annual HPI row.
+
 \begin{figure}[H]
 \begin{center}
-    \includegraphics[width=1.0\textwidth]{./image/CorrelationTable1.png}
+    \makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{./image/CorrelationTable1.png}}
     \caption{Pearson Correlation Table in Step 1}
     \label{fig:pearson1}
 \end{center}
@@ -122,7 +123,7 @@ We use China as an example (Figure \ref{fig:pearson1}). Here actually we only us
 After doing this step for all four countries, we plot the correlation table for all variables left (Figure \ref{fig:pearson2}).
 \begin{figure}[H]
 \begin{center}
-    \includegraphics[width=1.0\textwidth]{./image/CorrelationTable2.png}
+    \makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{./image/CorrelationTable2.png}}
     \caption{Pearson Correlation Table in Step 2}
     \label{fig:pearson2}
 \end{center}
@@ -162,7 +163,7 @@ New commercial vehicle sales, numbers per year     &  809939.636 &  65941.198 & 
 Banking system z-scores                            &      15.349 &      2.031 &      10.330 &      18.013 \\
 \bottomrule
 \end{tabular}}
-\caption{Mean, Standard deviation, Min and Maximum of each variable, Japan}
+\caption{Mean, Standard deviation, Min and Maximum of each variable (Japan)}
 \label{tab:describe_jpn}
 \end{table}
 
@@ -197,7 +198,7 @@ New commercial vehicle sales, numbers per year     &  3933418.000 &  359135.486 
 Banking system z-scores                            &       20.852 &       2.269 &       17.130 &       24.116 \\
 \bottomrule
 \end{tabular}}
-\caption{Mean, Standard deviation, Min and Maximum of each variable, China}
+\caption{Mean, Standard deviation, Min and Maximum of each variable (China)}
 \label{tab:describe_chn}
 \end{table}
 
@@ -232,7 +233,7 @@ New commercial vehicle sales, numbers per year     &  142465.909 &  38579.063 & 
 Banking system z-scores                            &      18.112 &      1.127 &     16.19 &      20.71 \\
 \bottomrule
 \end{tabular}}
-\caption{Mean, Standard deviation, Min and Maximum of each variable, Philippines}
+\caption{Mean, Standard deviation, Min and Maximum of each variable (Philippines)}
 \label{tab:describe_phl}
 \end{table}
 
@@ -267,7 +268,7 @@ New commercial vehicle sales, numbers per year     &  730269.091 &  148067.419 &
 Banking system z-scores                            &      16.813 &       0.470 &      15.96 &       17.560 \\
 \bottomrule
 \end{tabular}}
-\caption{Mean, Standard deviation, Min and Maximum of each variable, India}
+\caption{Mean, Standard deviation, Min and Maximum of each variable (India)}
 \label{tab:describe_ind}
 \end{table}
 
@@ -386,11 +387,37 @@ The result shows that only the residual of Japan is normally distributed. In the
 
 For this project, heteroskedasticity represents the level of volatility in the market. For example, there exists a correlation between the housing price and inflation, money supply. Although we may assume the real price of the HPI remains constant during the observation, the nominal price, which is reflected in HPI, continuous to grow. Hence, we choose to believe the volatility would increase along the HPI\citep{Heteroskedasticity1,Heteroskedasticity2}.
 
-We create residual plots for all four countries:
+\begin{figure}[H]
+\centering
+\subfloat[Residual vs. Unemployment Rate\label{fig:res_UR_JPN}]{\includegraphics[width=0.5\textwidth]{./image/Resid_unemployment_JPN.png}}\hfill
+\subfloat[Residual vs. Government Spending as percent of GDP\label{fig:res_GS_JPN}] {\includegraphics[width=0.5\textwidth]{./image/Resid_gs_JPN.png}}\hfill
+\caption{Residual Plot (Japan)} \label{fig:res_JPN}
+\end{figure}
 
-For both unemployment rate and government spending as a percent of GDP, the residuals for all four countries randomly scattered around zero (the upper right plots), which is an indication that heteroscedasticity is not a problem with either predictor variable in the model\citep{Residual1}.
+\begin{figure}[H]
+\centering
+\subfloat[Residual vs. Unemployment Rate\label{fig:res_UR_CHN}]{\includegraphics[width=0.5\textwidth]{./image/Resid_unemployment_CHN.png}}\hfill
+\subfloat[Residual vs. Government Spending as percent of GDP\label{fig:res_GS_CHN}] {\includegraphics[width=0.5\textwidth]{./image/Resid_gs_CHN.png}}\hfill
+\caption{Residual Plot (China)} \label{fig:res_CHN}
+\end{figure}
 
-\section{Implications and conclusion}\label{conclusion}
+\begin{figure}[H]
+\centering
+\subfloat[Residual vs. Unemployment Rate\label{fig:res_UR_PHL}]{\includegraphics[width=0.5\textwidth]{./image/Resid_unemployment_PHL.png}}\hfill
+\subfloat[Residual vs. Government Spending as percent of GDP\label{fig:res_GS_PHL}] {\includegraphics[width=0.5\textwidth]{./image/Resid_gs_PHL.png}}\hfill
+\caption{Residual Plot (Philippines)} \label{fig:res_PHL}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subfloat[Residual vs. Unemployment Rate\label{fig:res_UR_IND}]{\includegraphics[width=0.5\textwidth]{./image/Resid_unemployment_IND.png}}\hfill
+\subfloat[Residual vs. Government Spending as percent of GDP\label{fig:res_GS_IND}] {\includegraphics[width=0.5\textwidth]{./image/Resid_gs_IND.png}}\hfill
+\caption{Residual Plot (India)} \label{fig:res_IND}
+\end{figure}
+
+We create residual plots for all four countries (Figure \ref{fig:res_JPN} to \ref{fig:res_IND}). For both unemployment rate and government spending as a percent of GDP, the residuals for all four countries randomly scattered around zero (the upper right plots), which is an indication that heteroscedasticity is not a problem with either predictor variable in the model\citep{Residual1}.
+
+\section{Implication and Conclusion}\label{conclusion}
 TODO
 
 \newpage

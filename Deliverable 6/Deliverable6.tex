@@ -48,6 +48,7 @@ TODO
 This section reviews literature that focused on the relationship between housing price and macroeconomic factors. Some of the literature concentrated on macroeconomic factors, while others emphasized various analyzing techniques. Most of the papers concluded with several variables that they found could be the key factors that impact the housing price. The results are shown in the table \ref{literature_review}.
 
 \begin{table}[H]
+\makebox[\linewidth]{
 \begin{tabular}{|l|l|}
 \hline
 Author(s) (year)       & Macroeconomic Factors                                                                                                                                                                                                                     \\ \hline
@@ -60,7 +61,7 @@ Author(s) (year)       & Macroeconomic Factors                                  
 \citet{RePEc:pra:mprapa:98089} & \begin{tabular}[c]{@{}l@{}l@{}l@{}}Price-to-income ratio, price-to-rent ratio, urbanization,\\per-capita GDP, rent, inflation, GDP growth rate,\\ broad money, real exchange rate, percentage share\\of employment in services\end{tabular} \\ \hline
 \citet{BOUCHOUICHA20121820}    & \begin{tabular}[c]{@{}l@{}}Inflation rate, short-and long-term interest rates, \\employment rate, money supply\end{tabular}                                                                                                              \\ \hline
 \citet{PropertyPriceEurope}    & \begin{tabular}[c]{@{}l@{}l@{}}Unemployment rate, population growth,\\consumption expenditure, household consumption\\expenditure and housing expenses\end{tabular}                                                                          \\ \hline
-\end{tabular}
+\end{tabular}}
 \caption{Macroeconomic factors that have the impact on housing price level.}
 \label{tab:literature_review}
 \end{table}
@@ -127,6 +128,7 @@ Lots of independent variables are strongly correlated, which does not satisfy th
 \section{Data}\label{data}
 We chose annual HPI as our dependent variable and based on the previous research, we chose 23 candidate variables for regression analysis. The relationship between those candidate variables and the annual HPI has been discussed in section \ref{methods}. The appendix contains a description of each variable, its type, how it was constructed, and the data source. The table below shows the mean, standard deviation, minimum, and maximum of each variable. We group the result by countries.
 \begin{table}[H]
+\makebox[\linewidth]{
 \begin{tabular}{lrrrr}
 \toprule
 {} Variable&        mean &        std &         min &         max \\
@@ -154,12 +156,13 @@ Income, profits, and capital gains taxes: perce... &      47.820 &      2.358 & 
 New commercial vehicle sales, numbers per year     &  809939.636 &  65941.198 &  701188.000 &  894125.000 \\
 Banking system z-scores                            &      15.349 &      2.031 &      10.330 &      18.013 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \caption{Mean, Standard deviation, Min and Maximum of each variable, Japan}
 \label{tab:describe_jpn}
 \end{table}
 
 \begin{table}[H]
+\makebox[\linewidth]{
 \begin{tabular}{lrrrr}
 \toprule
 {} Variable&         mean &         std &          min &          max \\
@@ -188,12 +191,13 @@ Income, profits, and capital gains taxes: perce... &       22.371 &       3.175 
 New commercial vehicle sales, numbers per year     &  3933418.000 &  359135.486 &  3313479.000 &  4370795.000 \\
 Banking system z-scores                            &       20.852 &       2.269 &       17.130 &       24.116 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \caption{Mean, Standard deviation, Min and Maximum of each variable, China}
 \label{tab:describe_chn}
 \end{table}
 
 \begin{table}[H]
+\makebox[\linewidth]{
 \begin{tabular}{lrrrr}
 \toprule
 {} Variable&        mean &        std &       min &        max \\
@@ -222,12 +226,13 @@ Income, profits, and capital gains taxes: perce... &      40.729 &      1.716 & 
 New commercial vehicle sales, numbers per year     &  142465.909 &  38579.063 &  86333.00 &  226384.00 \\
 Banking system z-scores                            &      18.112 &      1.127 &     16.19 &      20.71 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \caption{Mean, Standard deviation, Min and Maximum of each variable, Philippines}
 \label{tab:describe_phl}
 \end{table}
 
 \begin{table}[H]
+\makebox[\linewidth]{
 \begin{tabular}{lrrrr}
 \toprule
 {} Variable&        mean &         std &        min &          max \\
@@ -256,7 +261,7 @@ Income, profits, and capital gains taxes: perce... &      44.837 &       2.997 &
 New commercial vehicle sales, numbers per year     &  730269.091 &  148067.419 &  449391.00 &  1005380.000 \\
 Banking system z-scores                            &      16.813 &       0.470 &      15.96 &       17.560 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \caption{Mean, Standard deviation, Min and Maximum of each variable, India}
 \label{tab:describe_ind}
 \end{table}
@@ -277,6 +282,7 @@ $H_a: \mu_1< \mu_2$\\
 $df=11+11-2=20$, the critical value for an one-tail t-test when $\alpha=0.05$ is $t_{crit}=1.725$.\\
 The results are shown in table \ref{tab:comparison_results}.
 \begin{table}[H]
+\centering
 \begin{tabular}{|l|l|l|l|l|}
 \hline
 Country A   & Country B   & $t_{obj}$ & $t_{crit}$ & result \\ \hline
@@ -291,11 +297,12 @@ India       & Japan       & 4.449066711 & 0          & 1      \\ \hline
 \label{tab:comparison_results}
 \end{table}
 
-For the comparison between India and Philippines, $t_{obj}=1.3956<t_{crit}$. We failed to reject $H_0$ and conclude that there is not enough evidence to show that the average HPI of Philippines is greater than that of India. For all other five comparisions, $t_{obj}>t_{crit}$, we reject $H_0$ and conclude that the HPI of the country in the second column is indeed greater than that in the first column.
+For the comparison between India and Philippines, $t_{obj}=1.3956<t_{crit}$. We failed to reject $H_0$ and conclude that there is not enough evidence to show that the average HPI of the Philippines is greater than that of India. For all the other five comparisons, $t_{obj}>t_{crit}$, we reject $H_0$ and conclude that the HPI of the country in the second column is indeed greater than that in the first column.
 
 \subsection{Regression and Residuals Analysis}\label{result_analysis}
 The regression results are summarized in the table \ref{tab:regression_results}. 
 \begin{table}[]
+\centering
 \renewcommand{\arraystretch}{0.8}
 \begin{tabular}{lrrrr}
 \toprule
@@ -340,7 +347,46 @@ The regression results are summarized in the table \ref{tab:regression_results}.
 \label{tab:regression_results}
 \end{table}
 
+For all four countries, the Prob(F-statistic) is close to zero, indicating that the overall regression is meaningful. All countries have a Durbin-Watson between 1 and 2, implying that the regression results are reliable from the interpretation side of this metric. According to R-squared, the unemployment rate and government spending are accounts for 80 to 90 percent of the variation in annual HPI. 
+
+Based on the result, we can get the regression equations for the four countries, in which ${\hat y}$ is the annual HPI, $x_1$ stands for the unemployment rate, and $x_2$ stands for Government spending as a percent of GDP.
+
+Japan: ${\hat y} = -4.856x_1 -5.4x_2 + 229.38$
+
+China: ${\hat y} = -61.183x_1 +9.599x_2 + 238.571$
+
+Philippines: ${\hat y} = -47.361x_1 +35.132x_2 - 72.193$
+
+India: ${\hat y} = -607.825x_1 -81.276x_2 + 4451.38$
+
+For the Philippines, the P-value of the constant is 0.774, which is abnormal. That's because of the unemployment rate and government spending are strongly correlated in the Philippines. However, as we are finding a universal model for all four countries, we have to make some compromise here.
+
+We performed k-s test on the residuals, results are shown in table \ref{tab:residualks_results}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|r|}
+\hline
+Country     & p-value \\ \hline
+Japan       & 0.94095 \\ \hline
+China       & 0.16866 \\ \hline
+Philippines & 0.00139 \\ \hline
+India       & 0.00135 \\ \hline
+\end{tabular}
+\caption{Residual K-S Test Results}
+\label{tab:residualks_results}
+\end{table}
+
+The result shows that only the residual of Japan is normally distributed. In the regression result, Prob(Omnibus) is low for China, also indicating the result is not normally distributed. For the other 3 countries, the Prob (Omnibus) is relatively high(around 0.8) so the data is somewhat normal, but not altogether ideal.
+
+For this project, heteroskedasticity represents the level of volatility in the market. For example, there exists a correlation between the housing price and inflation, money supply. Although we may assume the real price of the HPI remains constant during the observation, the nominal price, which is reflected in HPI, continuous to grow. Hence, we choose to believe the volatility would increase along the HPI\citep{Heteroskedasticity1,Heteroskedasticity2}.
+
+We create residual plots for all four countries:
+
+For both unemployment rate and government spending as a percent of GDP, the residuals for all four countries randomly scattered around zero (the upper right plots), which is an indication that heteroscedasticity is not a problem with either predictor variable in the model\citep{Residual1}.
+
 \section{Implications and conclusion}\label{conclusion}
+TODO
 
 \newpage
 \bibliographystyle{apalike}

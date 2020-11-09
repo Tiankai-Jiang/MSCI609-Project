@@ -39,10 +39,19 @@ Gupta, R., Kabundi, A., and Miller, S.~M. (2011).
   non-structural models with and without fundamentals.
 \newblock {\em Economic Modelling}, 28(4):2013 -- 2021.
 
+\bibitem[Hayes, 2020]{Heteroskedasticity1}
+Hayes, A. (2020).
+\newblock Heteroskedasticity-investopedia.
+
 \bibitem[Iacoviello and Neri, 2010]{10.1257/mac.2.2.125}
 Iacoviello, M. and Neri, S. (2010).
 \newblock Housing market spillovers: Evidence from an estimated dsge model.
 \newblock {\em American Economic Journal: Macroeconomics}, 2(2):125--64.
+
+\bibitem[Nguyen, 2020]{Heteroskedasticity2}
+Nguyen, J. (2020).
+\newblock Is there a correlation between inflation and home
+  prices?-investopedia.
 
 \bibitem[Pan and Wang, 2013]{PAN20131720}
 Pan, H. and Wang, C. (2013).
@@ -76,5 +85,9 @@ Tripathi, S. (2019).
 \newblock {Macroeconomic Determinants of Housing Prices: A Cross Country Level
   Analysis}.
 \newblock MPRA Paper 98089, University Library of Munich, Germany.
+
+\bibitem[Zach, 2020]{Residual1}
+Zach (2020).
+\newblock How to {Create a Residual} plot in python.
 
 \end{thebibliography}

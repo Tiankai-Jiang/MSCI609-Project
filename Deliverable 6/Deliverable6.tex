@@ -275,7 +275,7 @@ Let $\mu_1$ denotes the average HPI of the country in the first column, $\mu_2$ 
 $H_0: \mu_1\geq \mu_2$\\
 $H_a: \mu_1< \mu_2$\\
 $df=11+11-2=20$, the critical value for an one-tail t-test when $\alpha=0.05$ is $t_{crit}=1.725$.\\
-The results are as follows:
+The results are shown in table \ref{tab:comparison_results}.
 \begin{table}[H]
 \begin{tabular}{|l|l|l|l|l|}
 \hline
@@ -287,11 +287,58 @@ Philippines & Japan       & 3.070888374 & 0          & 1      \\ \hline
 India       & China       & 3.929769778 & 0          & 1      \\ \hline
 India       & Japan       & 4.449066711 & 0          & 1      \\ \hline
 \end{tabular}
+\caption{Comparison Results}
+\label{tab:comparison_results}
 \end{table}
 
 For the comparison between India and Philippines, $t_{obj}=1.3956<t_{crit}$. We failed to reject $H_0$ and conclude that there is not enough evidence to show that the average HPI of Philippines is greater than that of India. For all other five comparisions, $t_{obj}>t_{crit}$, we reject $H_0$ and conclude that the HPI of the country in the second column is indeed greater than that in the first column.
 
 \subsection{Regression and Residuals Analysis}\label{result_analysis}
+The regression results are summarized in the table \ref{tab:regression_results}. 
+\begin{table}[]
+\renewcommand{\arraystretch}{0.8}
+\begin{tabular}{lrrrr}
+\toprule
+                           &        Japan &        China & Philippines &        India \\
+\midrule
+                    Model: &          OLS &          OLS &         OLS &          OLS \\
+       Dependent Variable: &   Annual HPI &   Annual HPI &  Annual HPI &   Annual HPI \\
+         No. Observations: &           11 &           11 &          11 &           11 \\
+                 Df Model: &            2 &            2 &           2 &            2 \\
+             Df Residuals: &            8 &            8 &           8 &            8 \\
+                R-squared: &        0.965 &        0.957 &       0.932 &        0.851 \\
+           Adj. R-squared: &        0.956 &        0.946 &       0.914 &        0.814 \\
+                      AIC: &      35.5778 &      59.7291 &     97.2204 &     109.2955 \\
+                      BIC: &      36.7715 &      60.9228 &     98.4141 &     110.4891 \\
+           Log-Likelihood: &      -14.789 &      -26.865 &     -45.610 &      -51.648 \\
+              F-statistic: &        110.0 &        88.39 &       54.40 &        22.82 \\
+       Prob (F-statistic): &     1.51e-06 &     3.51e-06 &    2.20e-05 &     0.000495 \\
+                    Scale: &       1.1847 &       10.645 &      321.61 &       963.98 \\
+               const\_Coef. &       229.38 &      238.571 &    -72.1933 &      4451.38 \\
+            const\_Std.Err. &      26.1221 &      69.3646 &     243.306 &      649.735 \\
+                   const\_t &      8.78105 &      3.43938 &   -0.296718 &      6.85107 \\
+               const\_P$>\abs{t}$ &  2.22013e-05 &    0.0088319 &    0.774239 &  0.000130848 \\
+    UnemploymentRate\_Coef. &     -4.85583 &     -61.1828 &    -47.3606 &     -607.825 \\
+ UnemploymentRate\_Std.Err. &      0.34461 &      10.3284 &      24.161 &       90.384 \\
+        UnemploymentRate\_t &     -14.0908 &     -5.92375 &     -1.9602 &     -6.72492 \\
+    UnemploymentRate\_P$>\abs{t}$ &    6.251e-07 &  0.000352204 &   0.0856311 &  0.000148837 \\
+         GovSpending\_Coef. &     -5.39993 &      9.59926 &     35.1322 &     -81.2761 \\
+      GovSpending\_Std.Err. &      1.31389 &      1.84297 &     15.8131 &      22.7249 \\
+             GovSpending\_t &     -4.10989 &      5.20857 &     2.22171 &     -3.57653 \\
+         GovSpending\_P$>\abs{t}$&   0.00339113 &  0.000813845 &   0.0570298 &   0.00722465 \\
+                  Omnibus: &        0.532 &        4.142 &       0.539 &        0.354 \\
+            Prob(Omnibus): &        0.766 &        0.126 &       0.764 &        0.838 \\
+                     Skew: &       -0.192 &       -0.954 &       0.401 &        0.241 \\
+                 Kurtosis: &        1.985 &        3.319 &       2.385 &        2.642 \\
+            Durbin-Watson: &        1.453 &        1.995 &       1.853 &        1.195 \\
+         Jarque-Bera (JB): &        0.541 &        1.714 &       0.469 &        0.165 \\
+                 Prob(JB): &        0.763 &        0.425 &       0.791 &        0.921 \\
+            Condition No.: &         1615 &         1177 &         515 &          856 \\
+\bottomrule
+\end{tabular}
+\caption{Regression Results}
+\label{tab:regression_results}
+\end{table}
 
 \section{Implications and conclusion}\label{conclusion}
 

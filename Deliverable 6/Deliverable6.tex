@@ -40,6 +40,9 @@
 \begin{document}
 
 \maketitle
+\begin{center}
+\textbf{Group 17}
+\end{center}
 
 \section{Introduction}\label{introduction}
 Talking about 2020, one of the ineluctable topics would be the impact of Coivd-19 and how to post-reaction would impact the financial market. It was unbelievable to see the U.S. stock market recover from the crisis in March. One of the most extreme examples would be Nasdaq where tech companies are significantly weighted. In hardly three months, it was not only recovered but also went beyond the post-high from before the pandemic. Base on CNBC's report, one of the largest no-commission online trading platforms Robinhood reports approximately 13 million active users. As we can say, more people have begun to establish attention to the Financial world since the market crash. Besides the stock market, the housing market has also increased. But it is challenging to explain such an abnormal increase base on fundamental knowledge because the world economy today remains far from being recovered due to the universal pandemic. We can recognize a higher than usual unemployment rate. One of the most objective indicators is the HPI, housing price index. In this project, we aim to explain the HPI using macroeconomic factors and perform trend analysis using a linear regression model. 
@@ -279,18 +282,35 @@ Banking system z-scores                            &      16.813 &       0.470 &
 
 \section{Results}\label{results}
 \subsection{Normality of the Dependent Variable}\label{normality_check}
-Kolmolgorov-Smirnoff test was used to check normality of the dependent variable.
+
+Shapiro-Wilks test was used to check normality of the dependent variable.
+
+$H_0$: The variable is normally distributed.
+
+$H_a$: The variable is not normally distributed.
+
+For China, India, Japan, Philippines, the p-values are \textbf{0.4830, 0.4636, 0.2070, 0.1855} respectively. All four values are greater than $\alpha=0.05$. Therefore, we failed to reject $H_0$ and concluded that the dependent variable is normally distributed.
+
+Kolmolgorov-Smirnoff test was also used to check normality of the dependent variable.
 $$D=\underset{1 \leq i \leq N}{\max}(F(Y_i)-\frac{i-1}{N},\frac{i}{N}-F(Y_i))$$
-$H_0$: The variable is normally distributed.\\
-$H_a$: The variable is not normally distributed.\\
+
+$H_0$: The variable is normally distributed.
+
+$H_a$: The variable is not normally distributed.
+
 For China, India, Japan, Philippines, the result are \textbf{0.1873, 0.1224, 0.1338, 0.1536} respectively. According to the One-Sample Kolmogorov-Smirnov Table (Appendix \ref{kstable}), when $n=11$ and $\alpha=0.05$, the critical value $D_{n,a}=0.3912$. All four results are less than the critical value. Therefore, we failed to reject the $H_0$. The dependent variable is normally distributed.
 
 \subsection{Mean Comparison of the Dependent Variable}\label{mean_comparison}
-One-tail two sample independent t-test was performed on all four countries. Therefore, there are 6 comparisons in total.\\
-Let $\mu_1$ denotes the average HPI of the country in the first column, $\mu_2$ denotes the average HPI of the country in the second column.\\
-$H_0: \mu_1\geq \mu_2$\\
-$H_a: \mu_1< \mu_2$\\
-$df=11+11-2=20$, the critical value for an one-tail t-test when $\alpha=0.05$ is $t_{crit}=1.725$.\\
+One-tail two sample independent t-test was performed on all four countries. Therefore, there are 6 comparisons in total.
+
+Let $\mu_1$ denotes the average HPI of the country in the first column, $\mu_2$ denotes the average HPI of the country in the second column.
+
+$H_0: \mu_1\geq \mu_2$
+
+$H_a: \mu_1< \mu_2$
+
+$df=11+11-2=20$, the critical value for an one-tail t-test when $\alpha=0.05$ is $t_{crit}=1.725$.
+
 The results are shown in table \ref{tab:comparison_results}.
 \begin{table}[H]
 \centering
@@ -390,6 +410,14 @@ India       & 0.00135 \\ \hline
 
 The result shows that only the residual of Japan is normally distributed. In the regression result, Prob(Omnibus) is low for China, also indicating the result is not normally distributed. For the other 3 countries, the Prob (Omnibus) is relatively high(around 0.8) so the data is somewhat normal, but not altogether ideal.
 
+Breusch-Pagan test was used to check the heteroscedasticity of the regression.
+
+$H_0$: Homoscedasticity is present.
+
+$H_a$: Heteroscedasticity exists.
+
+The p-values of the test are \textbf{0.7657, 0.0186, 0.2902, 0.0876} for China, India, Japan, Philippines respectively. Hence, for China, Japan and Philippines, we failed to reject the null hypothesis and we concluded that the models are not heteroskedastic. However, for India, the p-value is less than $\alpha=0.05$, we reject $H_0$ and concluded that the model is heteroskedastic.
+
 For this project, heteroskedasticity represents the level of volatility in the market. For example, there exists a correlation between the housing price and inflation, money supply. Although we may assume the real price of the HPI remains constant during the observation, the nominal price, which is reflected in HPI, continuous to grow. Hence, we choose to believe the volatility would increase along the HPI\citep{Heteroskedasticity1,Heteroskedasticity2}.
 
 \begin{figure}[H]
@@ -420,7 +448,7 @@ For this project, heteroskedasticity represents the level of volatility in the m
 \caption{Residual Plot (India)} \label{fig:res_IND}
 \end{figure}
 
-We create residual plots for all four countries (Figure \ref{fig:res_JPN} to \ref{fig:res_IND}). For both unemployment rate and government spending as a percent of GDP, the residuals for all four countries randomly scattered around zero (the upper right plots), which is an indication that heteroscedasticity is not a problem with either predictor variable in the model\citep{Residual1}.
+We also created residual plots for all four countries (Figure \ref{fig:res_JPN} to \ref{fig:res_IND}). For both unemployment rate and government spending as a percent of GDP, the residuals for all four countries randomly scattered around zero (the upper right plots), which is an indication that heteroscedasticity is not a problem with either predictor variable in the model\citep{Residual1}.
 
 \section{Implication and Conclusion}\label{conclusion}
 Through this experiment, we successfully implement ways to represent HPI with independent variables selected from a pool of macroeconomic factors. However, many of the macroeconomic factors may represent overlapping information. For example, capital investment and household consumption can both shown as a percentage of GDP. Thus, it is essential to minimize such correlation when choosing independent variables to increase the accuracy of the linear regression. In this experiment, we find a universal linear model using the unemployment rate and government spending as a percent of GDP. Although the model we found certainly has great potential to improve, we have to make some compromise as we are looking for a universal model for all four countries. From time to time, the domestic situation of a country can not speak for another. But, we believe that we have successfully demonstrated the relationship between HPI and macroeconomics. Furthermore, a linear equation can express this relationship including predicting future changes. 
